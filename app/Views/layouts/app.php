@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="<?= base_url('vendors/datatables.net-bs4/dataTables.bootstrap4.css'); ?>">
   <link rel="stylesheet" type="text/css" href="<?= base_url('js/select.dataTables.min.css'); ?>">
   <link rel="stylesheet" href="<?= base_url('css/vertical-layout-light/style.css'); ?>">
+  <link rel="stylesheet" href="<?= base_url('style/style.css'); ?>">
   <link rel="shortcut icon" href="<?= base_url('images/favicon.png'); ?>" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -28,7 +29,7 @@
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">© 2024 PT RPN X IT DEL. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">PT RPN</span>
           </div>
         </footer>
       </div>

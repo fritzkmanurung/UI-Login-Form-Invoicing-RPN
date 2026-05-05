@@ -8,11 +8,11 @@
     <title>Invoice</title>
 </head>
 
-<body>
+<body class="login-body">
     <div class="wrapper fadeInDown">
 
         <div>
-            <img src="../img/logo-header-rpn.png" id="icon" alt="Logo" />
+            <img src="../images/logo-header-rpn.png" id="icon" alt="Logo" />
         </div>
 
         <div id="formContent">

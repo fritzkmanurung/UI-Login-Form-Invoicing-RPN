@@ -6,66 +6,74 @@ List Invoice
 
 <?= $this->section('content') ?>
 
-<h6 class="text-muted mb-3"><i class="ti-file"></i> List Invoice </h6>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb custom-breadcrumb bg-transparent mb-0 px-0 py-1" style="border: none;">
+            <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>"><i class="ti-home"></i> Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><i class="ti-view-list"></i> List Invoice</li>
+        </ol>
+    </nav>
+    <button type="button" class="btn btn-primary btn-rounded btn-icon-text font-weight-bold shadow-sm" onclick="window.location.href='<?= base_url('list-invoice/tambah') ?>';">
+        <i class="ti-plus btn-icon-prepend"></i> Tambah Invoice Baru
+    </button>
+</div>
 
-<div class="stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <button type="button" class="btn btn-primary float-right" onclick="window.location.href='<?= base_url('list-invoice/tambah') ?>';">
-                <i class="ti-plus"></i> Tambah
-            </button>
-            <div class="table-responsive pt-3">
-                <h4 class="table-title">List Invoice</h4>
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>No Urut </th>
-                            <th>Jenis</th>
-                            <th>Pemohon</th>
-                            <th>Generated Date</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="">
-                            <td>1</td>
-                            <td>Proforma Invoice</td>
-                            <td>Fritz Kevin Manurung</td>
-                            <td>27/04/2024</td>
-                            <td><span class="badge badge-warning">Pending</span></td>
-                            <td>
-                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="window.location.href='<?= base_url('/kontrak-view') ?>'">
-                                    <i class="ti-eye"></i> Lihat
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>2</td>
-                            <td>Proforma Invoice</td>
-                            <td>Fritz Kevin Manurung</td>
-                            <td>27/04/2024</td>
-                            <td><span class="badge badge-success">Approved</span></td>
-                            <td>
-                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="window.location.href='<?= base_url('/kontrak-view') ?>'">
-                                    <i class="ti-eye"></i> Lihat
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>3</td>
-                            <td>Invoice</td>
-                            <td>Fritz Kevin Manurung</td>
-                            <td>27/04/2024</td>
-                            <td><span class="badge badge-success">Approved</span></td>
-                            <td>
-                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="window.location.href='<?= base_url('/kontrak-view') ?>'">
-                                    <i class="ti-eye"></i> Lihat
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+<div class="row">
+    <div class="col-lg-12 stretch-card">
+        <div class="card shadow-sm border-0 rounded-lg">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered custom-table">
+                        <thead class="thead-light border-bottom">
+                            <tr>
+                                <th class="font-weight-bold">No Urut</th>
+                                <th class="font-weight-bold">Jenis</th>
+                                <th class="font-weight-bold">Pemohon</th>
+                                <th class="font-weight-bold">Generated Date</th>
+                                <th class="font-weight-bold">Status</th>
+                                <th class="font-weight-bold text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-3">1</td>
+                                <td class="py-3">Proforma Invoice</td>
+                                <td class="py-3">Fritz Kevin Manurung</td>
+                                <td class="text-muted py-3">27/04/2024</td>
+                                <td class="py-3"><span class="badge badge-warning badge-pill px-3 py-2">Pending</span></td>
+                                <td class="text-center py-3">
+                                    <button type="button" class="btn btn-sm btn-outline-primary btn-rounded btn-icon-text shadow-sm" onclick="window.location.href='<?= base_url('/kontrak-view') ?>'">
+                                        <i class="ti-eye"></i> Lihat
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-3">2</td>
+                                <td class="py-3">Proforma Invoice</td>
+                                <td class="py-3">Fritz Kevin Manurung</td>
+                                <td class="text-muted py-3">27/04/2024</td>
+                                <td class="py-3"><span class="badge badge-success badge-pill px-3 py-2">Approved</span></td>
+                                <td class="text-center py-3">
+                                    <button type="button" class="btn btn-sm btn-outline-primary btn-rounded btn-icon-text shadow-sm" onclick="window.location.href='<?= base_url('/kontrak-view') ?>'">
+                                        <i class="ti-eye"></i> Lihat
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-3">3</td>
+                                <td class="py-3">Invoice</td>
+                                <td class="py-3">Fritz Kevin Manurung</td>
+                                <td class="text-muted py-3">27/04/2024</td>
+                                <td class="py-3"><span class="badge badge-success badge-pill px-3 py-2">Approved</span></td>
+                                <td class="text-center py-3">
+                                    <button type="button" class="btn btn-sm btn-outline-primary btn-icon-text" onclick="window.location.href='<?= base_url('/kontrak-view') ?>'">
+                                        <i class="ti-eye"></i> Lihat
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
