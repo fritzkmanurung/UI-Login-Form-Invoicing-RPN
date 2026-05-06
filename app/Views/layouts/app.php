@@ -29,7 +29,6 @@
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">© 2024 PT RPN X IT DEL. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">PT RPN</span>
           </div>
         </footer>
       </div>
@@ -59,7 +58,21 @@
         "autoWidth": false,
         "responsive": true,
         "pageLength": 10,
-        "lengthMenu": [5, 10, 25, 50, 75, 100]
+        "lengthMenu": [5, 10, 25, 50, 100],
+        "language": {
+          "lengthMenu": "Tampilkan _MENU_ data",
+          "zeroRecords": "Data tidak ditemukan",
+          "info": "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+          "infoEmpty": "Tidak ada data",
+          "infoFiltered": "(disaring dari _MAX_ total data)",
+          "search": "Cari:",
+          "paginate": {
+            "first": "Awal",
+            "last": "Akhir",
+            "next": "&#8250;",
+            "previous": "&#8249;"
+          }
+        }
       });
     });
   </script>

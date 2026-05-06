@@ -303,51 +303,58 @@ a:hover {
 
 /* Custom Breadcrumb Revamped */
 .custom-breadcrumb {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
   margin-bottom: 0 !important;
-  font-family: 'Poppins', sans-serif; /* Setup Font Elegan */
+  font-family: 'Poppins', sans-serif;
 }
 .custom-breadcrumb .breadcrumb-item {
-  font-size: 13px; /* Ukuran font dikecilkan sesuai permintaan */
-  display: inline-block;
-  vertical-align: middle;
-  color: #8f95a0; /* Abu-abu terang untuk yang tidak aktif */
+  display: flex !important;
+  align-items: center !important;
+  font-size: 13px;
+  color: #8f95a0;
   font-weight: 500;
+  padding-left: 0; /* Reset default padding */
 }
 .custom-breadcrumb .breadcrumb-item i {
   font-size: 13px !important;
   margin-right: 6px;
-  vertical-align: middle;
-  line-height: normal;
+  line-height: 1;
   color: inherit;
+  display: inline-flex;
+  align-items: center;
 }
 .custom-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
-  content: "\203A" !important; /* Charset standar panah kanan cantik */
-  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  content: "\203A" !important;
+  font-size: 20px;
   color: #d1d5db;
-  padding: 0 10px; /* Sedikit dirapatkan */
-  vertical-align: middle;
-  line-height: 0.8;
+  padding: 0 10px;
+  line-height: 1;
 }
 .custom-breadcrumb .breadcrumb-item a {
   color: #8f95a0;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
-  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
 }
 .custom-breadcrumb .breadcrumb-item a:hover {
-  color: #4b49ac; /* Warna biru primer saat di-hover */
+  color: #4b49ac;
 }
 .custom-breadcrumb .breadcrumb-item.active {
-  color: #2b2b36; /* Warna gelap tegas yang stand out */
-  font-weight: 600; /* Lebih tebal */
+  color: #2b2b36;
+  font-weight: 600;
   letter-spacing: 0.2px;
 }
 .custom-breadcrumb .breadcrumb-item.active i {
-  color: #4b49ac; /* Ikon active warnanya biru mencolok */
+  color: #4b49ac;
 }
 
 /* Custom Table */
@@ -400,4 +407,184 @@ a:hover {
 }
 .btn-primary:hover {
   transform: translateY(-1px);
+}
+
+/* DataTable Controls Styling */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+  font-size: 13px;
+  margin-top: 12px;
+}
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_filter input {
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 4px 10px !important;
+  font-size: 12px !important;
+  border-radius: 6px !important;
+  margin: 0 2px !important;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE (max-width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+  /* Header / Topbar */
+  .navbar {
+    min-height: 70px !important;
+  }
+  .navbar .navbar-brand-wrapper {
+    width: auto !important;
+    height: 70px !important;
+  }
+  .navbar .navbar-menu-wrapper {
+    padding: 0 10px;
+    height: 70px !important;
+  }
+
+  /* Button alignment fix */
+  .btn-icon-text {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px;
+  }
+  .btn-icon-text i {
+    margin: 0 !important;
+    font-size: 14px !important;
+  }
+  .btn-sm {
+    font-size: 13px !important; /* Increased font size for mobile button */
+    padding: 8px 16px !important;
+  }
+
+  /* Sidebar */
+  .sidebar .nav .nav-item .nav-link {
+    font-size: 13px;
+    padding: 10px 15px;
+  }
+  .sidebar .nav .nav-item .nav-link .menu-title {
+    font-size: 13px;
+  }
+
+  /* Content area */
+  .content-wrapper {
+    padding: 15px 10px !important;
+  }
+
+  /* Form elements */
+  .form-group label {
+    font-size: 12px !important;
+    margin-bottom: 5px !important;
+  }
+  .form-control, .form-control-lg {
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+    height: auto !important;
+  }
+  .form-group {
+    margin-bottom: 15px !important;
+  }
+
+  /* Breadcrumb */
+  .custom-breadcrumb .breadcrumb-item {
+    font-size: 12px;
+  }
+  .custom-breadcrumb .breadcrumb-item i {
+    font-size: 12px !important;
+  }
+
+  /* Table */
+  .custom-table {
+    font-size: 11px !important;
+  }
+  .custom-table thead th:first-child,
+  .custom-table tbody td:first-child {
+    min-width: 70px !important;
+    text-align: center;
+  }
+  .custom-table thead th {
+    font-size: 11px !important;
+    padding: 12px 8px !important; /* Increased vertical padding for more height */
+    vertical-align: middle !important;
+  }
+  .custom-table tbody td {
+    padding: 10px 8px !important;
+  }
+
+  /* DataTable controls - Forcing Bootstrap 4 Columns */
+  .dataTables_wrapper .row:first-child {
+    display: flex !important;
+    flex-wrap: nowrap !important; /* Force one line */
+    align-items: center !important;
+    margin-bottom: 10px !important;
+  }
+  .dataTables_wrapper .row:first-child > div {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    padding: 0 5px !important;
+  }
+  .dataTables_wrapper .dataTables_length label {
+    font-size: 10px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #666;
+  }
+  .dataTables_wrapper .dataTables_length select {
+    width: 50px !important;
+    height: 26px !important;
+    font-size: 10px !important;
+    padding: 0 2px !important;
+    margin: 0 4px !important;
+  }
+  .dataTables_wrapper .dataTables_filter {
+    text-align: right !important;
+  }
+  .dataTables_wrapper .dataTables_filter label {
+    font-size: 10px !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    color: #666;
+  }
+  .dataTables_wrapper .dataTables_filter input {
+    width: 80px !important;
+    height: 26px !important;
+    margin-left: 4px !important;
+    font-size: 10px !important;
+    display: inline-block !important;
+  }
+  .dataTables_wrapper .dataTables_filter input::placeholder {
+    content: "Cari...";
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 3px 8px !important;
+    font-size: 11px !important;
+  }
+
+  .badge {
+    font-size: 10px !important;
+    padding: 3px 8px !important;
+  }
+
+  /* Card body */
+  .card-body {
+    padding: 12px !important;
+  }
+
+  /* Footer */
+  .footer {
+    font-size: 11px;
+    padding: 10px !important;
+  }
 }
