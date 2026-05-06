@@ -19,7 +19,7 @@
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
         <a class="dropdown-item" href="<?= base_url('login'); ?>">
             <i class="ti-power-off text-primary"></i>
-            Logout
+            Keluar
           </a>
         </div>
       </li>

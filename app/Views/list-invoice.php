@@ -1,7 +1,7 @@
 <?= $this->extend('layouts/app') ?>
 
 <?= $this->section('title') ?>
-List Invoice
+Daftar Invoice
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -9,8 +9,8 @@ List Invoice
 <div class="d-flex justify-content-between align-items-center mb-4">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb custom-breadcrumb bg-transparent mb-0 px-0 py-1" style="border: none;">
-            <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>"><i class="ti-home"></i> Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><i class="ti-view-list"></i> List Invoice</li>
+            <li class="breadcrumb-item"><i class="ti-home"></i></li>
+            <li class="breadcrumb-item active" aria-current="page"><i class="ti-view-list"></i> Daftar Invoice</li>
         </ol>
     </nav>
     <button type="button" class="btn btn-primary btn-rounded btn-icon-text font-weight-bold shadow-sm" onclick="window.location.href='<?= base_url('list-invoice/tambah') ?>';">
@@ -29,7 +29,7 @@ List Invoice
                                 <th class="font-weight-bold">No Urut</th>
                                 <th class="font-weight-bold">Jenis</th>
                                 <th class="font-weight-bold">Pemohon</th>
-                                <th class="font-weight-bold">Generated Date</th>
+                                <th class="font-weight-bold">Tanggal Dibuat</th>
                                 <th class="font-weight-bold">Status</th>
                                 <th class="font-weight-bold text-center">Aksi</th>
                             </tr>
@@ -40,7 +40,7 @@ List Invoice
                                 <td class="py-3">Proforma Invoice</td>
                                 <td class="py-3">Fritz Kevin Manurung</td>
                                 <td class="text-muted py-3">27/04/2024</td>
-                                <td class="py-3"><span class="badge badge-warning badge-pill px-3 py-2">Pending</span></td>
+                                <td class="py-3"><span class="badge badge-warning badge-pill px-3 py-2">Menunggu</span></td>
                                 <td class="text-center py-3">
                                     <button type="button" class="btn btn-sm btn-outline-primary btn-rounded btn-icon-text shadow-sm" onclick="window.location.href='<?= base_url('/kontrak-view') ?>'">
                                         <i class="ti-eye"></i> Lihat
@@ -52,7 +52,7 @@ List Invoice
                                 <td class="py-3">Proforma Invoice</td>
                                 <td class="py-3">Fritz Kevin Manurung</td>
                                 <td class="text-muted py-3">27/04/2024</td>
-                                <td class="py-3"><span class="badge badge-success badge-pill px-3 py-2">Approved</span></td>
+                                <td class="py-3"><span class="badge badge-success badge-pill px-3 py-2">Disetujui</span></td>
                                 <td class="text-center py-3">
                                     <button type="button" class="btn btn-sm btn-outline-primary btn-rounded btn-icon-text shadow-sm" onclick="window.location.href='<?= base_url('/kontrak-view') ?>'">
                                         <i class="ti-eye"></i> Lihat
@@ -64,7 +64,7 @@ List Invoice
                                 <td class="py-3">Invoice</td>
                                 <td class="py-3">Fritz Kevin Manurung</td>
                                 <td class="text-muted py-3">27/04/2024</td>
-                                <td class="py-3"><span class="badge badge-success badge-pill px-3 py-2">Approved</span></td>
+                                <td class="py-3"><span class="badge badge-success badge-pill px-3 py-2">Disetujui</span></td>
                                 <td class="text-center py-3">
                                     <button type="button" class="btn btn-sm btn-outline-primary btn-icon-text" onclick="window.location.href='<?= base_url('/kontrak-view') ?>'">
                                         <i class="ti-eye"></i> Lihat

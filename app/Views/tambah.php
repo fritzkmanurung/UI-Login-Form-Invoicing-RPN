@@ -8,8 +8,8 @@ Tambah Invoice
 <div class="mb-4">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb custom-breadcrumb bg-transparent mb-0 px-0 py-1" style="border: none;">
-            <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>"><i class="ti-home"></i> Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="<?= base_url('list-invoice') ?>"><i class="ti-view-list"></i> List Invoice</a></li>
+            <li class="breadcrumb-item"><i class="ti-home"></i></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('list-invoice') ?>"><i class="ti-view-list"></i> Daftar Invoice</a></li>
             <li class="breadcrumb-item active" aria-current="page"><i class="ti-plus"></i> Tambah Invoice</li>
         </ol>
     </nav>
@@ -38,8 +38,8 @@ Tambah Invoice
                     
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-light btn-rounded mr-2 px-4 shadow-sm" onclick="window.history.back()">Batal</button>
-                        <button type="submit" class="btn btn-primary btn-rounded px-4 shadow-sm" id="submitProforma" style="display: none;"><i class="ti-save mr-2"></i> Simpan Proforma Invoice</button>
-                        <button type="submit" class="btn btn-primary btn-rounded px-4 shadow-sm" id="submitInvoice" style="display: none;"><i class="ti-save mr-2"></i> Simpan Invoice</button>
+                        <button type="submit" class="btn btn-primary btn-rounded px-4 shadow-sm" id="submitProforma" style="display: none;"><i class="ti-save mr-2"></i> Simpan</button>
+                        <button type="submit" class="btn btn-primary btn-rounded px-4 shadow-sm" id="submitInvoice" style="display: none;"><i class="ti-save mr-2"></i> Simpan</button>
                     </div>
                 </form>
             </div>
@@ -69,7 +69,7 @@ Tambah Invoice
 
             if (jenisDokumen === 'proforma') {
                 additionalInput.innerHTML = `
-                    <label for="date" class="font-weight-600">Date<span class="text-danger">*</span></label>
+                    <label for="date" class="font-weight-600">Tanggal<span class="text-danger">*</span></label>
                     <input type="date" class="form-control form-control-lg input-shadow-sm" id="date" name="date" required>
                 `;
 
@@ -85,8 +85,8 @@ Tambah Invoice
                             </select>
                         </div>
                         <div class="form-group col-md-6 mb-4">
-                            <label for="customer" class="font-weight-600">Customer (Name/institution)<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control form-control-lg input-shadow-sm" id="customer" name="customer" placeholder="Nama Customer" required>
+                            <label for="customer" class="font-weight-600">Nama Customer / Instansi<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-lg input-shadow-sm" id="customer" name="customer" placeholder="Masukkan nama customer atau instansi" required>
                         </div>
                     </div>
                     <div class="row">
@@ -122,7 +122,7 @@ Tambah Invoice
                             <input type="text" class="form-control form-control-lg input-shadow-sm" id="noProformaInvoice" name="noProformaInvoice" placeholder="Nomor Proforma" required>
                         </div>
                         <div class="form-group col-md-6 mb-4">
-                            <label for="date" class="font-weight-600">Date<span class="text-danger">*</span></label>
+                            <label for="date" class="font-weight-600">Tanggal<span class="text-danger">*</span></label>
                             <input type="date" class="form-control form-control-lg input-shadow-sm" id="date" name="date" required>
                         </div>
                     </div>
@@ -140,8 +140,8 @@ Tambah Invoice
                             </select>
                         </div>
                         <div class="form-group col-md-6 mb-4">
-                            <label for="customer" class="font-weight-600">Customer (Name/institution)<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control form-control-lg input-shadow-sm" id="customer" name="customer" placeholder="Nama Customer" required>
+                            <label for="customer" class="font-weight-600">Nama Customer / Instansi<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-lg input-shadow-sm" id="customer" name="customer" placeholder="Masukkan nama customer atau instansi" required>
                         </div>
                     </div>
                     <div class="row">
@@ -173,7 +173,7 @@ Tambah Invoice
 
             const itemCard = `
                 <div class="form-group mt-2">
-                    <label class="font-weight-bold h5">Item Detail<span class="text-danger">*</span></label>
+                    <label class="font-weight-bold h5">Detail Item<span class="text-danger">*</span></label>
                     <div class="card bg-light border-0 shadow-sm mt-2">
                         <div class="card-body">
                             <div class="table-responsive">
@@ -182,7 +182,7 @@ Tambah Invoice
                                         <tr>
                                             <th>Deskripsi</th>
                                             <th>Nominal (Rp)</th>
-                                            <th>Qty</th>
+                                            <th>Jumlah</th>
                                             <th>Subtotal (Rp)</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -204,12 +204,12 @@ Tambah Invoice
                                         <div class="input-group-prepend">
                                             <span class="input-group-text bg-white border-right-0">Rp</span>
                                         </div>
-                                        <input type="number" class="form-control border-left-0" id="nominal" placeholder="0.00" step="0.01">
+                                        <input type="text" class="form-control border-left-0" id="nominal" placeholder="0" oninput="formatRupiah(this)">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-2 mb-3">
-                                    <label class="text-muted small mb-1">Quantity</label>
-                                    <input type="number" class="form-control shadow-sm" id="quantity" placeholder="1">
+                                    <label class="text-muted small mb-1">Jumlah</label>
+                                    <input type="number" class="form-control shadow-sm" id="quantity" placeholder="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                                 </div>
                                 <div class="form-group col-md-2 mb-3 text-right">
                                     <button type="button" class="btn btn-primary btn-block btn-rounded shadow-sm" id="addItemBtn">
@@ -229,7 +229,8 @@ Tambah Invoice
 
             document.getElementById('addItemBtn').addEventListener('click', function() {
                 const deskripsi = document.getElementById('deskripsi').value;
-                const nominal = parseFloat(document.getElementById('nominal').value);
+                const nominalRaw = document.getElementById('nominal').value.replace(/\./g, '');
+                const nominal = parseFloat(nominalRaw);
                 const quantity = parseInt(document.getElementById('quantity').value);
 
                 if (deskripsi && nominal && quantity) {
@@ -238,9 +239,9 @@ Tambah Invoice
                     const newRow = `
                         <tr>
                             <td class="text-left">${deskripsi}</td>
-                            <td>${nominal.toLocaleString('id-ID', { minimumFractionDigits: 2 })}</td>
+                            <td>${nominal.toLocaleString('id-ID', { minimumFractionDigits: 0 })}</td>
                             <td>${quantity}</td>
-                            <td><strong>${subtotal.toLocaleString('id-ID', { minimumFractionDigits: 2 })}</strong></td>
+                            <td><strong>${subtotal.toLocaleString('id-ID', { minimumFractionDigits: 0 })}</strong></td>
                             <td><button type="button" class="btn btn-danger btn-sm rounded-circle px-2 py-1 removeItemBtn shadow-sm" title="Hapus"><i class="ti-close"></i></button></td>
                         </tr>
                     `;
@@ -248,9 +249,9 @@ Tambah Invoice
                     document.getElementById('itemTableBody').insertAdjacentHTML('beforeend', newRow);
 
                     const totalElement = document.getElementById('total');
-                    const currentTotal = parseFloat(totalElement.textContent.replace(/\./g, '').replace(/,/g, '.')) || 0;
+                    const currentTotal = parseFloat(totalElement.textContent.replace(/\./g, '')) || 0;
                     const newTotal = currentTotal + subtotal;
-                    totalElement.textContent = newTotal.toLocaleString('id-ID', { minimumFractionDigits: 2 });
+                    totalElement.textContent = newTotal.toLocaleString('id-ID', { minimumFractionDigits: 0 });
 
                     document.getElementById('itemTable').style.display = '';
                     document.getElementById('totalContainer').style.display = 'block';
@@ -264,11 +265,11 @@ Tambah Invoice
                             const row = this.closest('tr');
                             const rowSubtotalText = row.cells[3].textContent;
                             
-                            const rowSubtotal = parseFloat(rowSubtotalText.replace(/\./g, '').replace(/,/g, '.')) || 0;
+                            const rowSubtotal = parseFloat(rowSubtotalText.replace(/\./g, '')) || 0;
                             
-                            const currentTotalForRemove = parseFloat(totalElement.textContent.replace(/\./g, '').replace(/,/g, '.')) || 0;
+                            const currentTotalForRemove = parseFloat(totalElement.textContent.replace(/\./g, '')) || 0;
                             const newTotalAfterRemove =  Math.max(0, currentTotalForRemove - rowSubtotal);
-                            totalElement.textContent = newTotalAfterRemove.toLocaleString('id-ID', { minimumFractionDigits: 2 });
+                            totalElement.textContent = newTotalAfterRemove.toLocaleString('id-ID', { minimumFractionDigits: 0 });
 
                             row.remove();
 
@@ -287,5 +288,13 @@ Tambah Invoice
             document.getElementById('submitInvoice').style.display = 'none';
         }
     });
+    function formatRupiah(input) {
+        let value = input.value.replace(/[^0-9]/g, '');
+        if (value === "") {
+            input.value = "";
+            return;
+        }
+        input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
 </script>
 <?= $this->endSection() ?>

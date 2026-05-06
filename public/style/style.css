@@ -173,6 +173,35 @@ a:hover {
   font-style: normal;
 }
 
+/* Password Visibility Toggle */
+.login-body .password-container {
+  position: relative;
+  width: 85%;
+  margin: 10px auto; 
+}
+
+.login-body .password-container input[type="password"],
+.login-body .password-container input[type="text"] {
+  width: 100%;
+  margin: 0;
+  padding-right: 40px; /* Space for the icon */
+}
+
+.login-body .password-container i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.login-body .password-container i:hover {
+  color: #3b82f6;
+}
+
 /* Animations */
 .fadeInDown {
   animation-name: fadeInDown;
@@ -215,6 +244,53 @@ a:hover {
 
 .login-body * {
   box-sizing: border-box;
+}
+
+/* Responsive for Mobile Login */
+@media (max-width: 576px) {
+  .login-body .wrapper {
+    padding: 10px;
+  }
+  .login-body #formContent {
+    padding: 25px 20px;
+    max-width: 90%;
+  }
+  .login-body #icon {
+    max-width: 120px;
+    margin-bottom: 10px;
+  }
+  .login-body h2 {
+    margin: 15px 0 5px 0;
+    font-size: 16px;
+  }
+  .login-body .custom-hr {
+    margin-bottom: 15px !important;
+  }
+  .login-body input[type="password"],
+  .login-body input[type="text"] {
+    padding: 12px 15px;
+    margin: 5px 0;
+    width: 95%;
+  }
+  .login-body .password-container {
+    width: 95%;
+  }
+  .login-body .password-container input[type="password"],
+  .login-body .password-container input[type="text"] {
+    width: 100%;
+  }
+  .login-body input[type="button"],
+  .login-body input[type="submit"],
+  .login-body a.fadeIn.fourth,
+  .login-body input[type="reset"] {
+    padding: 12px 30px;
+    margin: 15px 0 5px 0;
+    width: 95%;
+  }
+  .login-body #formFooter {
+    margin-top: 15px;
+    padding: 10px;
+  }
 }
 
 .custom-hr {
