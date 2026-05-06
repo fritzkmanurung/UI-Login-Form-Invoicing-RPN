@@ -20,9 +20,8 @@ Tambah Invoice
         <div class="card shadow-sm border-0 rounded-lg">
             <div class="card-body p-4 p-md-5">
                 <form action="" method="post" id="invoiceForm">
-                <form action="" method="post" id="invoiceForm">
                     <div class="row" id="dynamicFormContent">
-                        <div class="form-group col-12 col-md-6 mb-4">
+                        <div class="form-group col-12 col-md-6 mb-4" id="jenisDokumenContainer">
                             <label for="jenisDokumen" class="font-weight-600 text-dark">Jenis Dokumen<span class="text-danger">*</span></label>
                             <select class="form-control border-primary-light shadow-sm" id="jenisDokumen" name="jenisDokumen" required>
                                 <option value="">-- Pilih Jenis Dokumen --</option>
@@ -54,29 +53,40 @@ Tambah Invoice
     .border-primary-light:focus { border-color: #4b49ac; box-shadow: 0 0 0 0.2rem rgba(75, 73, 172, 0.25); }
     .input-shadow-sm { box-shadow: 0 2px 4px rgba(0,0,0,.04); border: 1px solid #e3e3e3;}
     .input-shadow-sm:focus { box-shadow: 0 2px 8px rgba(75, 73, 172,.15); border-color: #4b49ac;}
+
+    @media (min-width: 768px) {
+        .detail-col-deskripsi { flex: 0 0 40% !important; max-width: 40% !important; }
+        .detail-col-nominal { flex: 0 0 25% !important; max-width: 25% !important; }
+        .detail-col-jumlah { flex: 0 0 20% !important; max-width: 20% !important; }
+        .detail-col-tombol { flex: 0 0 15% !important; max-width: 15% !important; }
+    }
 </style>
 
 <script>
     document.getElementById('jenisDokumen').addEventListener('change', function() {
         const dynamicContent = document.getElementById('dynamicFormContent');
         const itemDetailSection = document.getElementById('itemDetailSection');
-        
-        // Clear previous content but keep 'Jenis Dokumen'
-        const jenisDokumenGroup = dynamicContent.firstElementChild.outerHTML;
-        dynamicContent.innerHTML = jenisDokumenGroup;
-        itemDetailSection.innerHTML = '';
-
         const jenisDokumen = this.value;
+        const jenisDokumenContainer = document.getElementById('jenisDokumenContainer');
+        
+        // Remove all siblings of jenisDokumenContainer (previous dynamic fields)
+        while (jenisDokumenContainer.nextElementSibling) {
+            jenisDokumenContainer.nextElementSibling.remove();
+        }
+        itemDetailSection.innerHTML = '';
 
         if (jenisDokumen === 'proforma' || jenisDokumen === 'invoice') {
             if (jenisDokumen === 'proforma') {
+                /* DESKTOP BARIS 1: Jenis Dokumen (50%), Tanggal (50%) */
+                jenisDokumenContainer.className = 'form-group col-12 col-md-6 mb-4';
+                
                 /* BARISAN PROFORMA */
                 dynamicContent.insertAdjacentHTML('beforeend', `
-                    <div class="form-group col-6 col-md-6 mb-4 order-2 order-md-1">
+                    <div class="form-group col-6 col-md-6 mb-4">
                         <label for="date" class="font-weight-600">Tanggal<span class="text-danger">*</span></label>
                         <input type="date" class="form-control input-shadow-sm" id="date" name="date" required>
                     </div>
-                    <div class="form-group col-6 col-md-6 mb-4 order-3 order-md-2">
+                    <div class="form-group col-6 col-md-6 mb-4">
                         <label for="jenisCustomer" class="font-weight-600">Jenis Customer<span class="text-danger">*</span></label>
                         <select class="form-control input-shadow-sm" id="jenisCustomer" name="jenisCustomer" required>
                             <option value="">-- Pilih --</option>
@@ -85,11 +95,11 @@ Tambah Invoice
                             <option value="Swasta">Swasta</option>
                         </select>
                     </div>
-                    <div class="form-group col-12 col-md-6 mb-4 order-4 order-md-3">
+                    <div class="form-group col-12 col-md-6 mb-4">
                         <label for="customer" class="font-weight-600">Nama Customer / Instansi<span class="text-danger">*</span></label>
                         <input type="text" class="form-control input-shadow-sm" id="customer" name="customer" placeholder="Nama Customer" required>
                     </div>
-                    <div class="form-group col-12 col-md-4 mb-4 order-5 order-md-4">
+                    <div class="form-group col-12 col-md-4 mb-4">
                         <label for="profilCenterArea" class="font-weight-600">Profil Center Area<span class="text-danger">*</span></label>
                         <select class="form-control input-shadow-sm" id="profilCenterArea" name="profilCenterArea" required>
                             <option value="">-- Pilih --</option>
@@ -97,11 +107,11 @@ Tambah Invoice
                             <option value="PPKS0206">PPKS0206</option>
                         </select>
                     </div>
-                    <div class="form-group col-6 col-md-4 mb-4 order-6 order-md-5">
+                    <div class="form-group col-6 col-md-4 mb-4">
                         <label for="subBagian" class="font-weight-600">Sub Bagian<span class="text-danger">*</span></label>
                         <input type="text" class="form-control input-shadow-sm" id="subBagian" name="subBagian" placeholder="Sub Bagian" required>
                     </div>
-                    <div class="form-group col-6 col-md-4 mb-4 order-7 order-md-6">
+                    <div class="form-group col-6 col-md-4 mb-4">
                         <label for="unitKerja" class="font-weight-600">Unit Kerja<span class="text-danger">*</span></label>
                         <select class="form-control input-shadow-sm" id="unitKerja" name="unitKerja" required>
                             <option value="">-- Pilih --</option>
@@ -113,17 +123,20 @@ Tambah Invoice
                 document.getElementById('submitProforma').style.display = 'inline-block';
                 document.getElementById('submitInvoice').style.display = 'none';
             } else {
+                /* DESKTOP BARIS 1: Jenis Dokumen (50%), No Proforma (25%), Tanggal (25%) */
+                jenisDokumenContainer.className = 'form-group col-12 col-md-6 mb-4';
+
                 /* BARISAN INVOICE */
                 dynamicContent.insertAdjacentHTML('beforeend', `
-                    <div class="form-group col-12 col-md-6 mb-4 order-2">
+                    <div class="form-group col-12 col-md-3 mb-4">
                         <label for="noProformaInvoice" class="font-weight-600">No. Proforma Invoice<span class="text-danger">*</span></label>
                         <input type="text" class="form-control input-shadow-sm" id="noProformaInvoice" name="noProformaInvoice" placeholder="Nomor Proforma" required>
                     </div>
-                    <div class="form-group col-6 col-md-6 mb-4 order-3">
+                    <div class="form-group col-6 col-md-3 mb-4">
                         <label for="date" class="font-weight-600">Tanggal<span class="text-danger">*</span></label>
                         <input type="date" class="form-control input-shadow-sm" id="date" name="date" required>
                     </div>
-                    <div class="form-group col-6 col-md-6 mb-4 order-4">
+                    <div class="form-group col-6 col-md-6 mb-4">
                         <label for="jenisCustomer" class="font-weight-600">Jenis Customer<span class="text-danger">*</span></label>
                         <select class="form-control input-shadow-sm" id="jenisCustomer" name="jenisCustomer" required>
                             <option value="">-- Pilih --</option>
@@ -132,11 +145,11 @@ Tambah Invoice
                             <option value="Swasta">Swasta</option>
                         </select>
                     </div>
-                    <div class="form-group col-12 col-md-6 mb-4 order-5">
+                    <div class="form-group col-12 col-md-6 mb-4">
                         <label for="customer" class="font-weight-600">Nama Customer / Instansi<span class="text-danger">*</span></label>
                         <input type="text" class="form-control input-shadow-sm" id="customer" name="customer" placeholder="Nama Customer" required>
                     </div>
-                    <div class="form-group col-12 col-md-6 mb-4 order-6">
+                    <div class="form-group col-12 col-md-4 mb-4">
                         <label for="profilCenterArea" class="font-weight-600">Profil Center Area<span class="text-danger">*</span></label>
                         <select class="form-control input-shadow-sm" id="profilCenterArea" name="profilCenterArea" required>
                             <option value="">-- Pilih --</option>
@@ -144,11 +157,11 @@ Tambah Invoice
                             <option value="PPKS0206">PPKS0206</option>
                         </select>
                     </div>
-                    <div class="form-group col-6 col-md-6 mb-4 order-7">
+                    <div class="form-group col-6 col-md-4 mb-4">
                         <label for="subBagian" class="font-weight-600">Sub Bagian<span class="text-danger">*</span></label>
                         <input type="text" class="form-control input-shadow-sm" id="subBagian" name="subBagian" placeholder="Sub Bagian" required>
                     </div>
-                    <div class="form-group col-6 col-md-6 mb-4 order-8">
+                    <div class="form-group col-6 col-md-4 mb-4">
                         <label for="unitKerja" class="font-weight-600">Unit Kerja<span class="text-danger">*</span></label>
                         <select class="form-control input-shadow-sm" id="unitKerja" name="unitKerja" required>
                             <option value="">-- Pilih --</option>
@@ -167,14 +180,12 @@ Tambah Invoice
                     <label class="font-weight-600" style="font-size: 15px;">Detail Item<span class="text-danger">*</span></label>
                     <hr class="mt-2 mb-3">
                     
-                    <div class="row">
-                        <div class="form-group col-12 mb-3">
+                    <div class="row align-items-end">
+                        <div class="form-group col-12 col-md-5 mb-3 detail-col-deskripsi">
                             <label class="text-muted small mb-1">Deskripsi Item</label>
                             <input type="text" class="form-control input-shadow-sm" id="deskripsi" placeholder="Masukkan deskripsi...">
                         </div>
-                    </div>
-                    <div class="row align-items-end">
-                        <div class="form-group col-6 col-md-5 mb-3">
+                        <div class="form-group col-6 col-md-3 mb-3 detail-col-nominal">
                             <label class="text-muted small mb-1">Nominal / Harga</label>
                             <div class="input-group shadow-sm">
                                 <div class="input-group-prepend">
@@ -183,13 +194,13 @@ Tambah Invoice
                                 <input type="text" class="form-control border-left-0" id="nominal" placeholder="0" oninput="formatRupiah(this)" style="font-size: 13px;">
                             </div>
                         </div>
-                        <div class="form-group col-6 col-md-3 mb-3">
+                        <div class="form-group col-6 col-md-2 mb-3 detail-col-jumlah">
                             <label class="text-muted small mb-1">Jumlah</label>
                             <input type="number" class="form-control input-shadow-sm" id="quantity" value="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');" style="font-size: 13px;">
                         </div>
-                        <div class="form-group col-12 col-md-4 mb-3">
-                            <button type="button" class="btn btn-primary btn-block btn-rounded shadow-sm" id="addItemBtn">
-                                <i class="ti-plus font-weight-bold"></i> Tambah Item
+                        <div class="form-group col-12 col-md-2 mb-3 detail-col-tombol">
+                            <button type="button" class="btn btn-primary btn-block btn-rounded shadow-sm p-2" id="addItemBtn">
+                                <i class="ti-plus"></i> Tambah
                             </button>
                         </div>
                     </div>
