@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 
+/* ============================================
+   1. LOGIN PAGE
+   ============================================ */
+
 /* BASIC */
 body.login-body {
   font-family: "Poppins", sans-serif;
@@ -94,20 +98,6 @@ a:hover {
   margin-top: 20px;
 }
 
-/* Global DataTable Select Fix */
-.dataTables_wrapper .dataTables_length select.custom-select.form-control,
-.dataTables_wrapper .dataTables_length select.custom-select.form-control:focus,
-.dataTables_wrapper .dataTables_length select.custom-select.form-control:active {
-  border: 1px solid #ced4da !important;
-  border-radius: 4px !important;
-  box-shadow: none !important;
-  outline: none !important;
-  background: #fff !important;
-  background-image: none !important;
-  -webkit-appearance: menulist !important;
-  appearance: menulist !important;
-}
-
 .login-body #formFooter h3 {
   font-weight: 500; 
   font-size: 12px;
@@ -198,7 +188,7 @@ a:hover {
 .login-body .password-container input[type="text"] {
   width: 100%;
   margin: 0;
-  padding-right: 40px; /* Space for the icon */
+  padding-right: 40px;
 }
 
 .login-body .password-container i {
@@ -216,7 +206,7 @@ a:hover {
   color: #3b82f6;
 }
 
-/* Animations */
+/* Login Animations */
 .fadeInDown {
   animation-name: fadeInDown;
   animation-duration: 0.8s;
@@ -260,7 +250,15 @@ a:hover {
   box-sizing: border-box;
 }
 
-/* Responsive for Mobile Login */
+.custom-hr {
+  width: 50%; 
+  border: 0;
+  height: 2px; 
+  background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+  margin: 0 auto 30px auto; 
+}
+
+/* Login Mobile Responsive */
 @media (max-width: 576px) {
   .login-body .wrapper {
     padding: 10px;
@@ -307,15 +305,12 @@ a:hover {
   }
 }
 
-.custom-hr {
-  width: 50%; 
-  border: 0;
-  height: 2px; 
-  background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
-  margin: 0 auto 30px auto; 
-}
 
-/* Custom Breadcrumb Revamped */
+/* ============================================
+   2. SHARED COMPONENTS
+   ============================================ */
+
+/* Custom Breadcrumb */
 .custom-breadcrumb {
   display: flex !important;
   align-items: center !important;
@@ -332,7 +327,7 @@ a:hover {
   font-size: 13px;
   color: #8f95a0;
   font-weight: 500;
-  padding-left: 0; /* Reset default padding */
+  padding-left: 0;
 }
 .custom-breadcrumb .breadcrumb-item i {
   font-size: 13px !important;
@@ -412,9 +407,6 @@ a:hover {
 .btn-rounded {
   border-radius: 50px !important;
 }
-.btn-outline-primary.btn-rounded {
-  border-radius: 50px !important;
-}
 .btn-outline-primary:hover {
   box-shadow: 0 4px 10px rgba(75, 73, 172, 0.2);
   transform: translateY(-1px);
@@ -423,7 +415,63 @@ a:hover {
   transform: translateY(-1px);
 }
 
-/* DataTable Controls Styling */
+/* Badge */
+.badge {
+  font-size: 10px;
+  padding: 3px 8px;
+}
+
+
+/* ============================================
+   3. INVOICE FORM (from tambah.php inline styles)
+   ============================================ */
+
+.font-weight-600 {
+  font-weight: 600;
+}
+.border-primary-light {
+  border: 1px solid #c9d7ff;
+}
+.border-primary-light:focus {
+  border-color: #4b49ac;
+  box-shadow: 0 0 0 0.2rem rgba(75, 73, 172, 0.25);
+}
+.input-shadow-sm {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
+  border: 1px solid #e3e3e3;
+}
+.input-shadow-sm:focus {
+  box-shadow: 0 2px 8px rgba(75, 73, 172, .15);
+  border-color: #4b49ac;
+}
+
+/* Detail Item Grid — Desktop Only */
+@media (min-width: 768px) {
+  .detail-col-deskripsi { flex: 0 0 40%; max-width: 40%; }
+  .detail-col-nominal  { flex: 0 0 25%; max-width: 25%; }
+  .detail-col-jumlah   { flex: 0 0 20%; max-width: 20%; }
+  .detail-col-tombol   { flex: 0 0 15%; max-width: 15%; }
+}
+
+
+/* ============================================
+   4. DATATABLE CONTROLS
+   ============================================ */
+
+/* Global DataTable Select Fix (double-border) */
+.dataTables_wrapper .dataTables_length select.custom-select.form-control,
+.dataTables_wrapper .dataTables_length select.custom-select.form-control:focus,
+.dataTables_wrapper .dataTables_length select.custom-select.form-control:active {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-shadow: none;
+  outline: none;
+  background: #fff;
+  background-image: none;
+  -webkit-appearance: menulist;
+  appearance: menulist;
+}
+
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter {
   font-size: 13px;
@@ -448,11 +496,36 @@ a:hover {
   margin: 0 2px !important;
 }
 
+/* DataTable Responsive Scrolling */
+.dataTables_wrapper {
+  width: 100%;
+  overflow: visible;
+}
+.dataTables_wrapper .row:nth-child(2) {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+}
+.dataTables_wrapper .row:nth-child(2) > div {
+  padding: 0;
+}
+.dataTables_wrapper .row:first-child,
+.dataTables_wrapper .row:last-child {
+  width: 100%;
+  margin: 0;
+  overflow: visible;
+}
+
+
 /* ============================================
-   MOBILE RESPONSIVE (max-width: 768px)
+   6. MOBILE RESPONSIVE (max-width: 768px)
    ============================================ */
+
 @media (max-width: 768px) {
-  /* Header / Topbar */
+
+  /* ---- Header / Topbar ---- */
   .navbar {
     min-height: 70px !important;
   }
@@ -484,7 +557,7 @@ a:hover {
     margin-left: 55px !important;
   }
 
-  /* Button alignment fix */
+  /* ---- Button ---- */
   .btn-icon-text {
     display: inline-flex !important;
     align-items: center !important;
@@ -499,7 +572,8 @@ a:hover {
     font-size: 13px !important;
     padding: 8px 16px !important;
   }
-  /* Profile Dropdown fix */
+
+  /* ---- Profile Dropdown ---- */
   .navbar-nav .nav-item.nav-profile {
     position: relative !important;
   }
@@ -532,7 +606,7 @@ a:hover {
     font-size: 22px !important;
   }
 
-  /* Sidebar */
+  /* ---- Sidebar ---- */
   .sidebar .nav .nav-item .nav-link {
     font-size: 13px;
     padding: 10px 15px;
@@ -541,12 +615,34 @@ a:hover {
     font-size: 13px;
   }
 
-  /* Content area */
+  /* Sidebar Offcanvas — Slide from Left (Mobile Only) */
+  .sidebar-offcanvas {
+    position: fixed !important;
+    top: 70px !important;
+    bottom: 0 !important;
+    left: -235px !important;
+    right: auto !important;
+    width: 235px !important;
+    background: #ffffff !important;
+    transition: all 0.3s ease !important;
+    z-index: 1030 !important;
+    box-shadow: 5px 0 10px rgba(0,0,0,0.05) !important;
+    height: calc(100vh - 70px) !important;
+    overflow-y: auto !important;
+  }
+  .sidebar-offcanvas.active {
+    left: 0 !important;
+  }
+
+  /* ---- Content ---- */
   .content-wrapper {
     padding: 25px 10px 15px 10px !important;
   }
+  .card-body {
+    padding: 12px !important;
+  }
 
-  /* Form elements */
+  /* ---- Form ---- */
   .form-group label {
     font-size: 12px !important;
     margin-bottom: 5px !important;
@@ -560,7 +656,7 @@ a:hover {
     margin-bottom: 15px !important;
   }
 
-  /* Breadcrumb */
+  /* ---- Breadcrumb ---- */
   .custom-breadcrumb .breadcrumb-item {
     font-size: 12px;
   }
@@ -568,7 +664,13 @@ a:hover {
     font-size: 12px !important;
   }
 
-  /* Table */
+  /* ---- Badge ---- */
+  .badge {
+    font-size: 10px !important;
+    padding: 3px 8px !important;
+  }
+
+  /* ---- List Invoice Table ---- */
   .custom-table {
     font-size: 11px !important;
   }
@@ -579,17 +681,17 @@ a:hover {
   }
   .custom-table thead th {
     font-size: 11px !important;
-    padding: 12px 8px !important; /* Increased vertical padding for more height */
+    padding: 12px 8px !important;
     vertical-align: middle !important;
   }
   .custom-table tbody td {
     padding: 10px 8px !important;
   }
 
-  /* DataTable controls - Forcing Bootstrap 4 Columns */
+  /* ---- DataTable Controls ---- */
   .dataTables_wrapper .row:first-child {
     display: flex !important;
-    flex-wrap: nowrap !important; /* Force one line */
+    flex-wrap: nowrap !important;
     align-items: center !important;
     margin-bottom: 10px !important;
   }
@@ -633,15 +735,12 @@ a:hover {
     font-size: 11px !important;
     display: inline-block !important;
   }
-  .dataTables_wrapper .dataTables_filter input::placeholder {
-    content: "Cari...";
-  }
   .dataTables_wrapper .dataTables_paginate .paginate_button {
     padding: 3px 8px !important;
     font-size: 11px !important;
   }
 
-  /* Item Table in Tambah.php (Mobile) - Ultra Compact */
+  /* ---- Item Table (Tambah Invoice) — Ultra Compact ---- */
   #itemTable {
     font-size: 9.5px !important;
   }
@@ -661,57 +760,4 @@ a:hover {
     padding: 8px !important;
     font-size: 11px !important;
   }
-}
-
-.badge {
-  font-size: 10px !important;
-  padding: 3px 8px !important;
-}
-
-/* DataTables Responsive Fix */
-.dataTables_wrapper {
-  width: 100% !important;
-  overflow: visible !important;
-}
-/* The row containing the actual table */
-.dataTables_wrapper .row:nth-child(2) {
-  display: block !important;
-  width: 100% !important;
-  overflow-x: auto !important;
-  -webkit-overflow-scrolling: touch;
-  margin: 0 !important;
-}
-.dataTables_wrapper .row:nth-child(2) > div {
-  padding: 0 !important;
-}
-/* Keep controls and pagination at 100% width of parent */
-.dataTables_wrapper .row:first-child,
-.dataTables_wrapper .row:last-child {
-  width: 100% !important;
-  margin: 0 !important;
-  overflow: visible !important;
-}
-
-/* Card body */
-.card-body {
-  padding: 12px !important;
-}
-
-/* Sidebar Offcanvas - Slide from Left */
-.sidebar-offcanvas {
-  position: fixed !important;
-  top: 70px !important;
-  bottom: 0 !important;
-  left: -235px !important;
-  right: auto !important;
-  width: 235px !important;
-  background: #ffffff !important;
-  transition: all 0.3s ease !important;
-  z-index: 1030 !important;
-  box-shadow: 5px 0 10px rgba(0,0,0,0.05) !important;
-  height: calc(100vh - 70px) !important;
-  overflow-y: auto !important;
-}
-.sidebar-offcanvas.active {
-  left: 0 !important;
 }

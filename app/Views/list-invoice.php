@@ -6,7 +6,6 @@ Daftar Invoice
 
 <?= $this->section('content') ?>
 
-<!-- Breadcrumb -->
 <div class="mb-2">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb custom-breadcrumb bg-transparent mb-0 px-0 py-1" style="border: none;">
@@ -16,7 +15,6 @@ Daftar Invoice
     </nav>
 </div>
 
-<!-- Action bar -->
 <div class="d-flex justify-content-end mb-3">
     <button type="button" class="btn btn-primary btn-rounded btn-icon-text font-weight-bold shadow-sm btn-sm" onclick="window.location.href='<?= base_url('list-invoice/tambah') ?>';">
         <i class="ti-plus btn-icon-prepend"></i> Tambah Invoice
@@ -28,7 +26,7 @@ Daftar Invoice
         <div class="card shadow-sm border-0 rounded-lg">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered custom-table" style="font-size: 13px;">
+                    <table class="table table-hover table-bordered custom-table datatable-list" style="font-size: 13px;">
                         <thead class="thead-light border-bottom">
                             <tr>
                                 <th class="font-weight-bold">No</th>

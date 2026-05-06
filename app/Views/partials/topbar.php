@@ -7,7 +7,7 @@
       <img src="<?= base_url('images/RPN 1.png'); ?>" class="mr-2" alt="logo" />
     </a>
     <a class="navbar-brand brand-logo-mini" href="<?= base_url('/dashboard'); ?>">
-      <img src="<?= base_url('images/RPN 1.png'); ?>" alt="logo" />
+      <img src="<?= base_url('images/RPN 2.png'); ?>" alt="logo" />
     </a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
